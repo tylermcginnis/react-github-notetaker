@@ -1,0 +1,39 @@
+{
+  "name": "React-Blogging-Platform",
+  "version": "1.0.0",
+  "description": "Because React is only 'the V in MVC', in order to get a React app up and running you need to actually know more than just React. This repo accompanies a future blog post on writing a React app with Flux, Browserify, Firebase, React-Router, and Gulp.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tylermcginnis/react-blogging-platform"
+  },
+  "keywords": [
+    "react",
+    "reactjs",
+    "flux",
+    "firebase",
+    "react-router",
+    "gulp",
+    "browserify"
+  ],
+  "author": "Tyler McGinnis @tylermcginnis33",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tylermcginnis/react-blogging-platform/issues"
+  },
+  "homepage": "https://github.com/tylermcginnis/react-blogging-platform",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-browserify": "^0.5.0",
+    "gulp-concat": "^2.4.2",
+    "reactify": "^0.17.1"
+  },
+  "dependencies": {
+    "flux": "^2.0.1",
+    "react": "^0.12.1",
+    "react-router": "^0.11.6"
+  }
+}
