@@ -37,7 +37,7 @@ var UserStore = objectAssign({}, EventEmitter.prototype, {
 
 AppDispatcher.register(function(payload){
   var action = payload.action;
-  switch(action){
+  switch(action.actionType){
     case UserConstants.GITHUB_USER_INFO :
       alert('Get Github User Info');
       UserStore.emit(CHANGE_EVENT);
