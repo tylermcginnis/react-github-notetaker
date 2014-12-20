@@ -8,15 +8,18 @@ var CHANGE_EVENT = 'change';
 
 var _notes = [];
 
+//child_added to anyone?
 fbRef.on('child_added', function(snapshot){
   _notes.push(snapshot.val());
   UserStore.emitChange();
 });
 
-var addNote = function(note){
-  fbRef.push(note);
+var addNote = function(noteObj){
+  fbRef.child(noteObj.user).push(noteObj.note)
 };
 
+
+//Different stores for Github and Notes?
 var UserStore = objectAssign({}, EventEmitter.prototype, {
   getGithubProfile: function(username){
     return 'THIS IS THE GITHUB PROFILE!'
@@ -49,7 +52,6 @@ AppDispatcher.register(function(payload){
     default:
       return true
   };
-
   return true;
 });
 

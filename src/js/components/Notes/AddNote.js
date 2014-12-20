@@ -9,7 +9,7 @@ var AddNote = React.createClass({
     this.setState({newNote: e.target.value});
   },
   handleSubmit: function(){
-    NoteActions.addNote(this.state.newNote);
+    NoteActions.addNote({note: this.state.newNote, user: this.props.username});
     this.setState({newNote: ''});
   },
   render: function(){
