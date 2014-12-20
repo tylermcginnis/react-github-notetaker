@@ -19,13 +19,12 @@ var SearchGithub = React.createClass({
             <input type="text" className="form-control" value={this.state.username} onChange={this.handleChange}/>
           </div>
           <div className="col-md-3">
-            <button className="btn btn-block btn-primary" onClick={this.handleSubmit}> Search Github </button>
+            <button className="btn btn-block btn-primary"><Link to="profile" params={{username: this.state.username}}> Search Github </Link></button>
           </div>
         </div>
       </div>
     )
   }
 });
-
 
 module.exports = SearchGithub;
