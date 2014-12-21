@@ -6,7 +6,6 @@ var Notes = require('../components/Notes/Notes');
 var Profile = React.createClass({
   mixins: [ Router.State ],
   render: function(){
-    /*better to get username from params or as prop?*/
     var username = this.getParams().username;
     return (
       <div className="row">

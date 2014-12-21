@@ -2,6 +2,8 @@ var React = require('React');
 var UserStore = require('../../stores/UserStore');
 var AddNote = require('./AddNote');
 var NotesList = require('./NotesList');
+var NoteActions = require('../../actions/NoteActions');
+
 
 var Notes = React.createClass({
   getInitialState: function(){
@@ -9,7 +11,11 @@ var Notes = React.createClass({
       notes: UserStore.getNotes()
     };
   },
+  componentWillReceiveProps: function(obj){
+    NoteActions.setUserRef(obj.username);
+  },
   componentDidMount: function(){
+    NoteActions.setUserRef(this.props.username);
     UserStore.addChangeListener(this._onChange);
   },
   componentWillUnmount: function(){

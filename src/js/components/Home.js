@@ -7,7 +7,7 @@ var Home = React.createClass({
     return (
       <div>
         <div className="row">
-          <div className="text-ce nter">
+          <div className="text-center">
             <h1> Some Text </h1>
           </div>
         </div>

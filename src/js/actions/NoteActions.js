@@ -7,6 +7,12 @@ var NoteActions = {
       actionType: UserConstants.ADD_NOTE,
       data: note
     });
+  },
+  setUserRef: function(username){
+    AppDispatcher.handleAction({
+      actionType: UserConstants.SET_USER_REF,
+      data: username
+    });
   }
 };
 

@@ -8,14 +8,32 @@ var CHANGE_EVENT = 'change';
 
 var _notes = [];
 
-//child_added to anyone?
-fbRef.on('child_added', function(snapshot){
-  _notes.push(snapshot.val());
-  UserStore.emitChange();
-});
-
 var addNote = function(noteObj){
   fbRef.child(noteObj.user).push(noteObj.note)
+};
+
+var clearNotes = function(){
+  _notes = [];
+};
+
+var userExistsCB = function(username, exists){
+  if(exists){
+    fbRef.child(username).on('child_added', function(snapshot){
+      _notes.push(snapshot.val());
+      UserStore.emitChange();
+    });
+  } else {
+    alert('No Notes Exist for ' + username);
+    UserStore.emitChange();
+  }
+};
+
+var setUserRef = function(username){
+  clearNotes();
+  fbRef.child(username).once('value', function(snapshot){
+    var exists = (snapshot.val() !== null);
+    userExistsCB(username, exists);
+  });
 };
 
 
@@ -24,7 +42,7 @@ var UserStore = objectAssign({}, EventEmitter.prototype, {
   getGithubProfile: function(username){
     return 'THIS IS THE GITHUB PROFILE!'
   },
-  getNotes: function(username){
+  getNotes: function(){
     return _notes;
   },
   emitChange: function(){
@@ -48,6 +66,9 @@ AppDispatcher.register(function(payload){
     case UserConstants.ADD_NOTE :
       addNote(action.data);
       UserStore.emit(CHANGE_EVENT);
+      break;
+    case UserConstants.SET_USER_REF :
+      setUserRef(action.data);
       break;
     default:
       return true

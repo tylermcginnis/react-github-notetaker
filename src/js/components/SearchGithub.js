@@ -1,7 +1,8 @@
 var React = require('React');
-var Link = require('react-router').Link;
+var Router = require('react-router');
 
 var SearchGithub = React.createClass({
+  mixins: [Router.Navigation],
   getInitialState: function(){
     return {username: ''}
   },
@@ -9,7 +10,7 @@ var SearchGithub = React.createClass({
     this.setState({username: e.target.value});
   },
   handleSubmit: function(){
-    alert(this.state.username);
+    this.transitionTo('profile', {username: this.state.username});
   },
   render: function(){
     return (
@@ -19,7 +20,7 @@ var SearchGithub = React.createClass({
             <input type="text" className="form-control" value={this.state.username} onChange={this.handleChange}/>
           </div>
           <div className="col-md-3">
-            <button className="btn btn-block btn-primary"><Link to="profile" params={{username: this.state.username}}> Search Github </Link></button>
+            <button className="btn btn-block btn-primary" onClick={this.handleSubmit}>Search Github</button>
           </div>
         </div>
       </div>
