@@ -1,6 +1,8 @@
 var React = require('React');
 var Router = require('react-router');
 var NotesStore = require('../stores/NotesStore');
+var Left = require('../components/Github/Left');
+var Middle = require('../components/Github/Middle');
 var Notes = require('../components/Notes/Notes');
 
 var Profile = React.createClass({
@@ -10,10 +12,10 @@ var Profile = React.createClass({
     return (
       <div className="row">
         <div className="col-md-4">
-          THE USERNAME IS {username}
+          <Left username={username}/>
         </div>
         <div className="col-md-4">
-          SOME OTHER GITHUB INFO
+          <Middle username={username}/>
         </div>
         <div className="col-md-4">
           <Notes username={username}/>

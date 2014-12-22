@@ -32,6 +32,7 @@
     "reactify": "^0.17.1"
   },
   "dependencies": {
+    "axios": "^0.4.2",
     "events": "^1.0.2",
     "firebase": "^2.0.6",
     "flux": "^2.0.1",
