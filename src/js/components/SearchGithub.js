@@ -10,7 +10,9 @@ var SearchGithub = React.createClass({
     this.setState({username: e.target.value});
   },
   handleSubmit: function(){
-    this.transitionTo('profile', {username: this.state.username});
+    var username = this.state.username;
+    this.setState({username: ''});
+    this.transitionTo('profile', {username: username});
   },
   render: function(){
     return (
