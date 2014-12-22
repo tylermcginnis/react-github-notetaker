@@ -1,11 +1,11 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
-var UserConstants = require('../constants/UserConstants');
+var AppConstants = require('../constants/AppConstants');
 var FirebaseUtils = require('../utils/FirebaseUtils');
 
 var NoteActions = {
   addNote: function(noteObj){
     AppDispatcher.handleAction({
-      actionType: UserConstants.ADD_NOTE,
+      actionType: AppConstants.ADD_NOTE,
       data: noteObj.note
     });
     FirebaseUtils.addNote(noteObj);
@@ -18,7 +18,7 @@ var NoteActions = {
     //also on('value') returns the whole collection just once and then calls the cb every time it changes so dispathcher is only triggered once + whenever it changes
     FirebaseUtils.homeInstance().child(username).on('value', function(snapshot){
       AppDispatcher.handleAction({
-        actionType: UserConstants.CHANGE_USER,
+        actionType: AppConstants.CHANGE_USER,
         data: {
           user: username,
           notes: FirebaseUtils.toArray(snapshot.val())

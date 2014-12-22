@@ -1,5 +1,5 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
-var UserConstants = require('../constants/UserConstants');
+var AppConstants = require('../constants/AppConstants');
 var objectAssign = require('react/lib/Object.assign');
 var EventEmitter = require('events').EventEmitter;
 var fbRef = require('../utils/FirebaseUtils.js').homeInstance();
@@ -42,11 +42,11 @@ var NotesStore = objectAssign({}, EventEmitter.prototype, {
 AppDispatcher.register(function(payload){
   var action = payload.action;
   switch(action.actionType){
-    case UserConstants.ADD_NOTE :
+    case AppConstants.ADD_NOTE :
       addNote(action.data);
       NotesStore.emit(CHANGE_EVENT);
       break;
-    case UserConstants.CHANGE_USER :
+    case AppConstants.CHANGE_USER :
       changeUser(action.data);
       NotesStore.emit(CHANGE_EVENT);
       break;

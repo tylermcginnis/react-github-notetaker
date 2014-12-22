@@ -1,10 +1,11 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
-var UserConstants = require('../constants/UserConstants');
+var AppConstants = require('../constants/AppConstants');
 
 var GithubActions = {
   getGithubInfo: function(username){
+    //call githubUtils which makes request, then...
     AppDispatcher.handleAction({
-      actionType: UserConstants.GITHUB_USER_INFO,
+      actionType: AppConstants.GITHUB_USER_INFO,
       data: username
     });
   }
