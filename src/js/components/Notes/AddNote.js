@@ -1,5 +1,6 @@
 var React = require('React');
 var NoteActions = require('../../actions/NoteActions');
+var NotesStore = require('../../stores/NotesStore');
 
 var AddNote = React.createClass({
   getInitialState: function(){
@@ -9,7 +10,8 @@ var AddNote = React.createClass({
     this.setState({newNote: e.target.value});
   },
   handleSubmit: function(){
-    NoteActions.addNote({note: this.state.newNote, user: this.props.username});
+    var user = NotesStore.getState().user;
+    NoteActions.addNote({user: user, note: this.state.newNote});
     this.setState({newNote: ''});
   },
   render: function(){

@@ -1,6 +1,6 @@
 var React = require('React');
 var Router = require('react-router');
-var UserStore = require('../stores/UserStore');
+var NotesStore = require('../stores/NotesStore');
 var Notes = require('../components/Notes/Notes');
 
 var Profile = React.createClass({

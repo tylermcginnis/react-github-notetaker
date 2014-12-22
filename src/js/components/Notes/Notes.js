@@ -1,25 +1,25 @@
 var React = require('React');
-var UserStore = require('../../stores/UserStore');
+var NotesStore = require('../../stores/NotesStore');
 var AddNote = require('./AddNote');
 var NotesList = require('./NotesList');
 var NoteActions = require('../../actions/NoteActions');
 
-
 var Notes = React.createClass({
   getInitialState: function(){
     return {
-      notes: UserStore.getNotes()
+      notes: NotesStore.getState().notes
     };
   },
   componentWillReceiveProps: function(obj){
-    NoteActions.setUserRef(obj.username);
+    //invoked whenever the route changes usernames
+    NoteActions.changeUser(obj.username);
   },
   componentDidMount: function(){
-    NoteActions.setUserRef(this.props.username);
-    UserStore.addChangeListener(this._onChange);
+    NoteActions.changeUser(this.props.username);
+    NotesStore.addChangeListener(this._onChange);
   },
   componentWillUnmount: function(){
-    UserStore.removeChangeListener(this._onChange);
+    NotesStore.removeChangeListener(this._onChange);
   },
   render: function(){
     return (
@@ -32,7 +32,7 @@ var Notes = React.createClass({
   },
   _onChange: function(){
     this.setState({
-      notes: UserStore.getNotes()
+      notes: NotesStore.getState().notes
     })
   }
 });
