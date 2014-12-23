@@ -8,3 +8,7 @@ html,body{
 .inner-container {
   padding: 60px 15px 0;
 }
+
+.cushion {
+  margin: 10px 0;
+}

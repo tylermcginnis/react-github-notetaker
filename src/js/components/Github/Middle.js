@@ -26,19 +26,18 @@ var Middle = React.createClass({
   render: function(){
     var repos = this.state.repos.map(function(repo){
       return (
-        <div>
-          <p> Name: {repo.name} </p>
-          <p> Description: {repo.description} </p>
-          <p> Location: <a href={repo.url}> {repo.name} </a> </p>
-        </div>
+        <li className="list-group-item">
+          {repo.url && <p><h4><a href={repo.url}>{repo.name}</a></h4></p>}
+          {repo.description && <p> {repo.description} </p>}
+        </li>
       )
     });
     return (
       <div>
-        <div>
-          TEST
+        <h3> User Repos </h3>
+        <ul className="list-group">
           {repos}
-        </div>
+        </ul>
       </div>
     )
   }

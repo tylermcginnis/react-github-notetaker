@@ -16,9 +16,11 @@ var AddNote = React.createClass({
   },
   render: function(){
     return (
-      <div>
-        <input type="text" value={this.state.newNote} onChange={this.handleChange} />
-        <button onClick={this.handleSubmit}> Submit </button>
+      <div className="input-group cushion">
+        <input type="text" className="form-control" placeholder="Add Note" value={this.state.newNote} onChange={this.handleChange}/>
+        <span className="input-group-btn">
+          <button className="btn btn-default" type="button" onClick={this.handleSubmit}>Submit</button>
+        </span>
       </div>
     )
   }
