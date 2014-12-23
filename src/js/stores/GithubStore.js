@@ -12,11 +12,7 @@ var _state = {
 };
 
 var newUser = function(username){
-  _state = {
-    user: username,
-    bio: undefined,
-    repos: undefined
-  }
+  _state.user = username;
 };
 
 var setBio = function(data){

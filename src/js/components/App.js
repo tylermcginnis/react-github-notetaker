@@ -1,7 +1,6 @@
 var React = require('React');
 var Home = require('./Home');
 var Header = require('./Header');
-var Footer = require('./Footer');
 var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
 
@@ -13,7 +12,6 @@ var App = React.createClass({
         <div className="container inner-container">
           <RouteHandler />
         </div>
-        <Footer />
       </div>
     )
   }

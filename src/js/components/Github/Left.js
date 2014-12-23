@@ -5,8 +5,8 @@ var GithubStore = require('../../stores/GithubStore');
 var Left = React.createClass({
   getInitialState: function(){
     return {
-      user: GithubStore.getUser(),
-      bio: GithubStore.getBio()
+      user: '',
+      bio: {}
     }
   },
   componentWillReceiveProps: function(obj){
@@ -30,10 +30,16 @@ var Left = React.createClass({
   render: function(){
     return (
       <div>
-        {this.state.user}
-        <div>
-          {this.state.bio}
-        </div>
+        <p> Avatar: <img src={this.state.bio.avatar_url}/> </p>
+        <p> Company: {this.state.bio.company} </p>
+        <p> Email: {this.state.bio.email} </p>
+        <p> Followers: {this.state.bio.followers} </p>
+        <p> Following: {this.state.bio.following} </p>
+        <p> Location: {this.state.bio.location} </p>
+        <p> Name: {this.state.bio.name} </p>
+        <p> Public Repos: {this.state.bio.public_repos} </p>
+        <p> Username: {this.state.bio.login} </p>
+        <p> Blog: {this.state.bio.blog} </p>
       </div>
     )
   }

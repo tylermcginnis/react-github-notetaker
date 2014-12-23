@@ -5,7 +5,7 @@ var GithubStore = require('../../stores/GithubStore');
 var Middle = React.createClass({
   getInitialState: function(){
     return {
-      repos: GithubStore.getRepos()
+      repos: []
     }
   },
   componentWillReceiveProps: function(obj){
@@ -24,10 +24,20 @@ var Middle = React.createClass({
     });
   },
   render: function(){
+    var repos = this.state.repos.map(function(repo){
+      return (
+        <div>
+          <p> Name: {repo.name} </p>
+          <p> Description: {repo.description} </p>
+          <p> Location: <a href={repo.url}> {repo.name} </a> </p>
+        </div>
+      )
+    });
     return (
       <div>
         <div>
-          REPOS: {this.state.repos}
+          TEST
+          {repos}
         </div>
       </div>
     )
